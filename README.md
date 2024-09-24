@@ -24,6 +24,17 @@ The **Personal Finance Application** is designed to help users manage their pers
 - **Frontend**: React.js for building the user interface.
 - **API**: A RESTful API using Java and Spring Boot for communication between the frontend and backend.
 
+## Application Architecture
+
+![application architecture](architecture-diagram.jpg)
+
+The application will follow a standard client-server architecture:
+
+- **Frontend**: React.js for user interactions.
+- **Backend**: Java and Spring Boot to handle business logic and data processing.
+- **Database**: MySQL to store user information, budgets, and spending data.
+- **API**: RESTful endpoints to facilitate frontend-backend communication.
+
 ## Database Models
 
 The application will consist of the following key models:
@@ -48,17 +59,6 @@ The application will consist of the following key models:
 | **Categories** | `id`            | Primary Key      | Unique identifier for each category            |
 |                | `user_id`       | Foreign Key      | References `user_id` in `Users` table          |
 |                | `name`          | String           | Name of the spending category (e.g., 'Food')   |
-
-## Application Architecture
-
-![application architecture](architecture-diagram.jpg)
-
-The application will follow a standard client-server architecture:
-
-- **Frontend**: React.js for user interactions.
-- **Backend**: Java and Spring Boot to handle business logic and data processing.
-- **Database**: MySQL to store user information, budgets, and spending data.
-- **API**: RESTful endpoints to facilitate frontend-backend communication.
 
 ## Error Handling Considerations
 
