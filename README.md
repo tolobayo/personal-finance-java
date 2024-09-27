@@ -20,7 +20,7 @@ The **Personal Finance Application** is designed to help users manage their pers
 ## Technical Requirements
 
 - **Backend**: Java for business logic.
-- **Database**: MySQL or a similar relational database to store user data.
+- **Database**: PostgreSQL database.
 - **Frontend**: React.js for building the user interface.
 - **API**: A RESTful API using Java and Spring Boot for communication between the frontend and backend.
 
@@ -32,7 +32,7 @@ The application will follow a standard client-server architecture:
 
 - **Frontend**: React.js for user interactions.
 - **Backend**: Java and Spring Boot to handle business logic and data processing.
-- **Database**: MySQL to store user information, budgets, and spending data.
+- **Database**: PostgreSQL to store user information, budgets, and spending data.
 - **API**: RESTful endpoints to facilitate frontend-backend communication.
 
 ## Database Models
