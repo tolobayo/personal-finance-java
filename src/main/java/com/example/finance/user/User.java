@@ -1,6 +1,25 @@
 package com.example.finance.user;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+@Entity(name = "Users")
+@Table
 public class User {
+    @Id
+    @SequenceGenerator(
+        name = "user_sequence",
+        sequenceName = "user_sequence",
+        allocationSize = 1
+    )
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+        generator = "user_sequence"
+    )
     private Long id;
     private String name;
     private String username;
