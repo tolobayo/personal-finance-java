@@ -1,67 +1,137 @@
 package com.example.finance.budget;
 
 import java.time.LocalDate;
+import java.util.Map;
 
+
+import com.example.finance.catagory.Catagory;
+import com.example.finance.user.User;
+
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapKeyJoinColumn;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+@Entity( name = "Budget")
+@Table( name = "budget")
 public class Budget {
+
+    @Id
+    @SequenceGenerator(name = "spending_item_sequence",
+    sequenceName = "spending_item_sequence",
+    allocationSize = 1)
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+        generator = "spending_item_sequence"
+    )
+    @Column(
+        name = "id",
+        updatable = false
+    )
     private Long id;
-    private Long user_id;
-    private Long catagory_id;
-    private LocalDate month;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    //TODO: Intialize catagoryLimits to new Hashmap
+    @ElementCollection
+    @CollectionTable(name = "budget_catagory_limits", joinColumns = @JoinColumn(name = "budget_id"))
+    @MapKeyJoinColumn(name = "catagory_id") // Assuming Catagory is an entity
+    @Column(name = "spending_limit_amount", columnDefinition = "NUMERIC(10,2)")
+    private Map<Catagory,Double> catagoryLimits;
+
+
+    //TODO: Users can only create one budget per month;
+    @Column(
+        name = "date",
+        nullable = false,
+        columnDefinition = "DATE"
+    )
+    private LocalDate date;
+
+    //Note: constraint for this total is that is has to be greater than or equal to the catagories total
+    @Column(
+        name = "total",
+        nullable = false,
+        columnDefinition = "NUMERIC(10,2)"
+    )
     private Double total;
+
     public Budget() {
     }
-    public Budget(Long id, Long user_id, Long catagory_id, LocalDate month, Double total) {
+
+    public Budget(Long id, User user, Map<Catagory, Double> catagoryLimits, LocalDate date, Double total) {
         this.id = id;
-        this.user_id = user_id;
-        this.catagory_id = catagory_id;
-        this.month = month;
+        this.user = user;
+        this.catagoryLimits = catagoryLimits;
+        this.date = date;
         this.total = total;
     }
-    public Budget(Long user_id, Long catagory_id, LocalDate month, Double total) {
-        this.user_id = user_id;
-        this.catagory_id = catagory_id;
-        this.month = month;
+
+    public Budget(User user, Map<Catagory, Double> catagoryLimits, LocalDate date, Double total) {
+        this.user = user;
+        this.catagoryLimits = catagoryLimits;
+        this.date = date;
         this.total = total;
     }
+
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getUser_id() {
-        return user_id;
+
+    public User getUser() {
+        return user;
     }
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+
+    public void setUser(User user) {
+        this.user = user;
     }
-    public Long getCatagory_id() {
-        return catagory_id;
+
+    public Map<Catagory, Double> getCatagoryLimits() {
+        return catagoryLimits;
     }
-    public void setCatagory_id(Long catagory_id) {
-        this.catagory_id = catagory_id;
+
+    public void setCatagoryLimits(Map<Catagory, Double> catagoryLimits) {
+        this.catagoryLimits = catagoryLimits;
     }
-    public LocalDate getMonth() {
-        return month;
+
+    public LocalDate getDate() {
+        return date;
     }
-    public void setMonth(LocalDate month) {
-        this.month = month;
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
+
     public Double getTotal() {
         return total;
     }
+
     public void setTotal(Double total) {
         this.total = total;
     }
+
     @Override
     public String toString() {
-        return "Budget [id=" + id + ", user_id=" + user_id + ", catagory_id=" + catagory_id + ", month=" + month
+        return "Budget [id=" + id + ", user=" + user + ", catagoryLimits=" + catagoryLimits + ", date=" + date
                 + ", total=" + total + "]";
     }
 
     
-
-
-
+    
+    
 
 }
