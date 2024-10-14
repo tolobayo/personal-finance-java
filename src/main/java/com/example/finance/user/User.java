@@ -74,14 +74,14 @@ public class User {
     public User(long id, String firstName, String lastName, String username, String password, String email) {
         this.id = id;
         this.firstName = firstName;
-        this.firstName = lastName;
+        this.lastName = lastName;
         this. username = username;
         this.password = password;
         this.email = email;
     }
     public User(String firstName, String lastName, String username, String password, String email) {
         this.firstName = firstName;
-        this.firstName = lastName;
+        this.lastName = lastName;
         this. username = username;
         this.password = password;
         this.email = email;
