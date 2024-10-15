@@ -50,7 +50,7 @@ public class Budget {
     private Map<Catagory,Double> catagoryLimits;
 
 
-    //TODO: Users can only create one budget per month;
+    //TODO: Users can only create one budget per month
     @Column(
         name = "date",
         nullable = false,
@@ -59,6 +59,7 @@ public class Budget {
     private LocalDate date;
 
     //Note: constraint for this total is that is has to be greater than or equal to the catagories total
+    //TODO: Debating on whether I want this to be a calculated value based on the defined catagories
     @Column(
         name = "total",
         nullable = false,
