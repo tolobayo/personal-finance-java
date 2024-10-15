@@ -1,5 +1,12 @@
 # Personal Finance Application
 
+## RoadMap
+
+[] Build Analytics service
+[] Add automated testing for each service
+[] Update readme models
+[] Build reccomendation service to make suggestions for catagories, limit values etc based on user history **stretch goal**
+
 ## Purpose
 
 The **Personal Finance Application** is designed to help users manage their personal finances on a month-to-month basis. With a simple and intuitive interface, users can create budgets, track their spending, and monitor when they exceed their budget. The application aims to provide users with insights into their financial habits and improve their budgeting skills.
@@ -34,6 +41,36 @@ The application will follow a standard client-server architecture:
 - **Backend**: Java and Spring Boot to handle business logic and data processing.
 - **Database**: PostgreSQL to store user information, budgets, and spending data.
 
+## Endpoints
+
+USER
+
+GET
+POST
+PUT
+DELETE
+
+BUDGET
+
+GET
+POST
+PUT
+DELETE
+
+SPENDING
+
+GET
+POST
+PUT
+DELETE
+
+CATAGORY
+
+GET
+POST
+PUT
+DELETE
+
 ## Database Models
 
 The application will consist of the following key models:
@@ -48,16 +85,16 @@ The application will consist of the following key models:
 | **Budgets**    | `id`            | Primary Key      | Unique identifier for each budget              |
 |                | `user_id`       | Foreign Key      | References `user_id` in `Users` table          |
 |                | `category_id`   | Foreign Key      | References `category_id` in `Categories` table |
-|                | `month`         | Date             | Budget month (e.g. '2024-09-18')                 |
+|                | `month`         | Date             | Budget month (e.g. '2024-09-18')               |
 |                | `total_budget`  | Float            | Total budget amount for the month              |
 | **Spending**   | `id`            | Primary Key      | Unique identifier for each spending entry      |
 |                | `user_id`       | Foreign Key      | References `user_id` in `Users` table          |
 |                | `category_id`   | Foreign Key      | References `category_id` in `Categories` table |
 |                | `amount_spent`  | Float            | Amount spent in a category                     |
-|                | `date`          | Date             | Date of the spending (e.g. '2024-09-18')      |
+|                | `date`          | Date             | Date of the spending (e.g. '2024-09-18')       |
 | **Categories** | `id`            | Primary Key      | Unique identifier for each category            |
 |                | `user_id`       | Foreign Key      | References `user_id` in `Users` table          |
-|                | `name`          | String           | Name of the spending category (e.g. 'Food')   |
+|                | `name`          | String           | Name of the spending category (e.g. 'Food')    |
 
 ## Error Handling Considerations
 
