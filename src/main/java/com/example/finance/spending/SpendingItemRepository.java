@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.example.finance.user.User;
 
-public interface SpendingRepository extends JpaRepository<Spending, Long> {
+public interface SpendingItemRepository extends JpaRepository<SpendingItem, Long> {
 
     @Query("SELECT s FROM Spending s WHERE s.user = ?1 AND s.date = ?2")
-    List<Spending> getSpendingByUserAndMonth(User user, LocalDate date);
+    List<SpendingItem> getSpendingByUserAndMonth(User user, LocalDate date);
 
 }

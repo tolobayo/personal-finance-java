@@ -14,26 +14,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "api/v1/spending")
-public class SpendingController {
-    private final SpendingService spendingService;
+public class SpendingItemController {
+    private final SpendingItemService spendingItemService;
 
     @Autowired
-    public SpendingController(SpendingService spendingService) {
-        this.spendingService = spendingService;
+    public SpendingItemController(SpendingItemService spendingItemService) {
+        this.spendingItemService = spendingItemService;
     }
 
     @GetMapping
-    public List<Spending> getSpendingByMonth(Long userId, LocalDate date) {
-        return spendingService.getSpendingByMonth(userId, date);
+    public List<SpendingItem> getSpendingByMonth(Long userId, LocalDate date) {
+        return spendingItemService.getSpendingByMonth(userId, date);
     }
 
     @PostMapping
-    public void addSpendingItem(@RequestBody Spending spendingItem) {
-        spendingService.addSpendingItem(spendingItem);
+    public void addSpendingItem(@RequestBody SpendingItem spendingItem) {
+        spendingItemService.addSpendingItem(spendingItem);
     }
 
     @DeleteMapping(path="{spendingId}")
     public void deleteSpendingItem(@PathVariable("spendingId") Long id) {
-        spendingService.deleteSpendingItem(id);
+        spendingItemService.deleteSpendingItem(id);
     }
 }

@@ -10,28 +10,28 @@ import com.example.finance.user.User;
 import com.example.finance.user.UserRepository;
 
 @Service
-public class SpendingService {
-    private final SpendingRepository spendingRepository;
+public class SpendingItemService {
+    private final SpendingItemRepository spendingItemRepository;
     private final UserRepository userRepository;
 
     @Autowired
-    public SpendingService(UserRepository userRepository, SpendingRepository spendingRepository) {
+    public SpendingItemService(UserRepository userRepository, SpendingItemRepository spendingItemRepository) {
         this.userRepository = userRepository;
-        this.spendingRepository = spendingRepository;
+        this.spendingItemRepository = spendingItemRepository;
     }
 
-    public List<Spending> getSpendingByMonth(Long userId,LocalDate date) {
+    public List<SpendingItem> getSpendingByMonth(Long userId,LocalDate date) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("Get Spending by Month Failed: User not found"));
-        return spendingRepository.getSpendingByUserAndMonth(user, date);
+        return spendingItemRepository.getSpendingByUserAndMonth(user, date);
     }
 
-    public void addSpendingItem(Spending item) {
+    public void addSpendingItem(SpendingItem item) {
         
-        spendingRepository.save(item);
+        spendingItemRepository.save(item);
     }
 
     public void deleteSpendingItem(Long id) {
-        spendingRepository.deleteById(id);
+        spendingItemRepository.deleteById(id);
     }
 }

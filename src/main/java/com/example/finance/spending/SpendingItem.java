@@ -17,7 +17,7 @@ import jakarta.persistence.Table;
 
 @Entity(name = "Spending")
 @Table(name = "spending")
-public class Spending {
+public class SpendingItem {
     @Id
     @SequenceGenerator(name = "spending_item_sequence",
     sequenceName = "spending_item_sequence",
@@ -63,10 +63,10 @@ public class Spending {
     )
     private LocalDate date;
     
-    public Spending() {
+    public SpendingItem() {
     }
 
-    public Spending(Long id, User user, Catagory catagory, String label, Double amountSpent, LocalDate date) {
+    public SpendingItem(Long id, User user, Catagory catagory, String label, Double amountSpent, LocalDate date) {
         this.id = id;
         this.user = user;
         this.catagory = catagory;
@@ -75,7 +75,7 @@ public class Spending {
         this.date = date;
     }
 
-    public Spending(User user, Catagory catagory, String label, Double amountSpent, LocalDate date) {
+    public SpendingItem(User user, Catagory catagory, String label, Double amountSpent, LocalDate date) {
         this.user = user;
         this.catagory = catagory;
         this.label = label;
