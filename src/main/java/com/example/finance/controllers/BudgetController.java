@@ -1,4 +1,4 @@
-package com.example.finance.budget;
+package com.example.finance.controllers;
 
 import java.util.List;
 import java.util.Map;
@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.finance.catagory.Catagory;
+import com.example.finance.entities.Budget;
+import com.example.finance.entities.Catagory;
+import com.example.finance.services.BudgetService;
 
 @RestController
 @RequestMapping(path = "api/vi/budget")

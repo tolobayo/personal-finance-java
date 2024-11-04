@@ -1,4 +1,4 @@
-package com.example.finance.spending;
+package com.example.finance.repositories;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -6,7 +6,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.example.finance.user.User;
+import com.example.finance.entities.SpendingItem;
+import com.example.finance.entities.User;
 
 public interface SpendingItemRepository extends JpaRepository<SpendingItem, Long> {
 

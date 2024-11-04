@@ -1,4 +1,4 @@
-package com.example.finance.catagory;
+package com.example.finance.controllers;
 
 import java.util.List;
 
@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.finance.entities.Catagory;
+import com.example.finance.services.CatagoryService;
 
 @RestController
 @RequestMapping(path = "api/vi/catagory")

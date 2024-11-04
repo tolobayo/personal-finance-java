@@ -1,4 +1,4 @@
-package com.example.finance.budget;
+package com.example.finance.services;
 
 import java.util.List;
 import java.util.Map;
@@ -8,9 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.finance.catagory.Catagory;
-import com.example.finance.user.User;
-import com.example.finance.user.UserRepository;
+import com.example.finance.repositories.UserRepository;
+import com.example.finance.entities.Catagory;
+import com.example.finance.entities.User;
+import com.example.finance.entities.Budget;
+import com.example.finance.repositories.BudgetRepository;
+
+
+
+
 
 @Service
 public class BudgetService {

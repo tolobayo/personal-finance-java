@@ -1,10 +1,13 @@
-package com.example.finance.user;
+package com.example.finance.config;
 
 import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.example.finance.entities.User;
+import com.example.finance.repositories.UserRepository;
 
 @Configuration
 public class UserConfig {
@@ -15,7 +18,7 @@ public class UserConfig {
             User joe = new User("Joe", "Robinson", "jrob23", "password123", "jrob23@gmail.com");
             User molly = new User("Molly", "Robinson", "mrob23", "password123", "mrob23@gmail.com");
 
-            repository.saveAll(List.of(joe, molly));
+            repository.saveAll(List.of(molly, joe));
 
         };
     }

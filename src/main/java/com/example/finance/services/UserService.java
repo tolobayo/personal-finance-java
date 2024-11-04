@@ -1,4 +1,4 @@
-package com.example.finance.user;
+package com.example.finance.services;
 
 import java.util.List;
 import java.util.Objects;
@@ -7,6 +7,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.example.finance.entities.User;
+import com.example.finance.repositories.UserRepository;
 
 //Note: service annotation allows service class to be injected in controller(api) without instantiating new instance (instantiating new instances is bad in java)
 @Service

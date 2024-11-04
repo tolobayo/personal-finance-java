@@ -1,11 +1,7 @@
-package com.example.finance.budget;
+package com.example.finance.entities;
 
 import java.time.LocalDate;
 import java.util.Map;
-
-
-import com.example.finance.catagory.Catagory;
-import com.example.finance.user.User;
 
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;

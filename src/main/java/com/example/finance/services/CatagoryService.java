@@ -1,4 +1,4 @@
-package com.example.finance.catagory;
+package com.example.finance.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.finance.user.User;
-import com.example.finance.user.UserRepository;
+import com.example.finance.entities.User;
+import com.example.finance.entities.Catagory;
+import com.example.finance.repositories.CatagoryRepository;
+import com.example.finance.repositories.UserRepository;
 
 @Service
 public class CatagoryService {

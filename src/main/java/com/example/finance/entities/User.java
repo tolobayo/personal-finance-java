@@ -1,4 +1,4 @@
-package com.example.finance.user;
+package com.example.finance.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,10 +1,12 @@
-package com.example.finance.user;
+package com.example.finance.repositories;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import com.example.finance.entities.User;
 
 //Responsible to for interactiong with the database
 @Repository

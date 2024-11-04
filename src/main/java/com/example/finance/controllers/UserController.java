@@ -1,4 +1,4 @@
-package com.example.finance.user;
+package com.example.finance.controllers;
 
 import java.util.List;
 
@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.finance.entities.User;
+import com.example.finance.services.UserService;
 
 //This acts as the api layer or the routing, defines endpoints for this data type
 @RestController

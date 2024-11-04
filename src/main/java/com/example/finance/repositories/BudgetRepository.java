@@ -1,4 +1,4 @@
-package com.example.finance.budget;
+package com.example.finance.repositories;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -8,7 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.example.finance.user.User;
+import com.example.finance.entities.Budget;
+import com.example.finance.entities.User;
 
 @Repository
 public interface BudgetRepository extends JpaRepository<Budget, Long> {
