@@ -2,10 +2,10 @@
 
 ## RoadMap
 
-[] Build Analytics service
-[] Add automated testing for each service
-[] Update readme models
-[] Build reccomendation service to make suggestions for catagories, limit values etc based on user history **stretch goal**
+- [x] Update readme models
+- [ ] Add automated testing for each service
+- [ ] Build Analytics service
+- [ ] Build reccomendation service to make suggestions for catagories, limit values etc based on user history **stretch goal**
 
 ## Purpose
 
@@ -43,33 +43,58 @@ The application will follow a standard client-server architecture:
 
 ## Endpoints
 
-USER
+### USER
 
-GET
-POST
-PUT
-DELETE
+- **GET** `/api/v1/user`  
+  Retrieves a list of all users.
 
-BUDGET
+- **POST** `/api/v1/user`  
+  Registers a new user.
 
-GET
-POST
-PUT
-DELETE
+- **DELETE** `/api/v1/user/{userId}`  
+  Deletes a user by their ID.
 
-SPENDING
+- **PUT** `/api/v1/user/{userId}`  
+  Updates user details.
 
-GET
-POST
-PUT
-DELETE
+### BUDGET
 
-CATAGORY
+- **GET** `/api/v1/budget/{userId}`  
+  Retrieves all monthly budgets for a specific user.
 
-GET
-POST
-PUT
-DELETE
+- **POST** `/api/v1/budget`  
+  Creates a new monthly budget.
+
+- **PUT** `/api/v1/budget/{budgetId}`  
+  Updates a monthly budget, including category limits and total.
+
+- **DELETE** `/api/v1/budget/{budgetId}`  
+  Deletes a monthly budget by its ID.
+
+### SPENDING
+
+- **GET** `/api/v1/spending`  
+  Retrieves spending items by user and month.
+
+- **POST** `/api/v1/spending`  
+  Adds a new spending item.
+
+- **DELETE** `/api/v1/spending/{spendingId}`  
+  Deletes a spending item by its ID.
+
+### CATAGORY
+
+- **GET** `/api/v1/catagory/{userId}`  
+  Retrieves categories for a specific user.
+
+- **POST** `/api/v1/catagory`  
+  Adds a new category.
+
+- **DELETE** `/api/v1/catagory/{catagoryId}`  
+  Deletes a category by its ID.
+
+- **PUT** `/api/v1/catagory/{catagoryId}`  
+  Updates a category's label.
 
 ## Database Models
 
