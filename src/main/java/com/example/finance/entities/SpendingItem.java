@@ -36,7 +36,7 @@ public class SpendingItem {
     //Note: each spending item can only have one catagory
     //TODO: create default value if catagory not set
     @ManyToOne
-    @JoinColumn(name = "catagory_id", nullable = false)
+    @JoinColumn(name = "catagory_id", nullable = true)
     private Catagory catagory;
 
     @Column(

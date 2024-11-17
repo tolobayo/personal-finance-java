@@ -25,7 +25,7 @@ public class SpendingItemService {
     public List<SpendingItem> getSpendingByMonth(Long userId,LocalDate date) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("Get Spending by Month Failed: User not found"));
-        return spendingItemRepository.getSpendingByUserAndMonth(user, date);
+        return spendingItemRepository.getSpendingByUserAndYearAndMonth(user, date.getYear(),date.getMonthValue());
     }
 
     public void addSpendingItem(SpendingItem item) {
