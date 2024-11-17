@@ -15,12 +15,12 @@ import jakarta.persistence.Table;
 public class Catagory {
 
     @Id
-    @SequenceGenerator(name = "spending_item_sequence",
-    sequenceName = "spending_item_sequence",
+    @SequenceGenerator(name = "catagory_sequence",
+    sequenceName = "catagory_sequence",
     allocationSize = 1)
     @GeneratedValue(
         strategy = GenerationType.SEQUENCE,
-        generator = "spending_item_sequence"
+        generator = "catagory_sequence"
     )
     @Column(
         name = "id",
