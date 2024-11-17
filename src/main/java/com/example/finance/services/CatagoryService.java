@@ -29,11 +29,11 @@ public class CatagoryService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("Find User Catagories Failed: User not found"));
         
-        return catagoryRepository.getCatagoriesByUser(user);
+        return catagoryRepository.findByUser(user);
     }
 
     public void addNewCatagory(Catagory newCatagory) {
-        Optional<Catagory> existingCatagory = catagoryRepository.findCatagoryByName(newCatagory.getName());
+        Optional<Catagory> existingCatagory = catagoryRepository.findByName(newCatagory.getName());
 
         if (existingCatagory == null) catagoryRepository.save(newCatagory);
     }

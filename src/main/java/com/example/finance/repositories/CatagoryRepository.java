@@ -11,10 +11,8 @@ import com.example.finance.entities.User;
 
 public interface CatagoryRepository extends JpaRepository<Catagory, Long> {
 
-    @Query("SELECT c FROM Catagory c WHERE c.user = ?1")
-    List<Catagory> getCatagoriesByUser(User user);
+    List<Catagory> findByUser(User user);
 
-    @Query("SELECT c FROM Catagory c WHERE c.name = ?1")
-    Optional<Catagory> findCatagoryByName(String name);
+    Optional<Catagory> findByName(String name);
 
 }
