@@ -2,7 +2,6 @@
 
 ## RoadMap
 
-- [x] Update readme models
 - [ ] Add automated testing for each service
 - [ ] Build Analytics service
 - [ ] Build reccomendation service to make suggestions for catagories, limit values etc based on user history **stretch goal**
@@ -71,7 +70,7 @@ The application will follow a standard client-server architecture:
 - **DELETE** `/api/v1/budget/{budgetId}`  
   Deletes a monthly budget by its ID.
 
-### SPENDING
+### SPENDINGITEM
 
 - **GET** `/api/v1/spending`  
   Retrieves spending items by user and month.
@@ -100,26 +99,28 @@ The application will follow a standard client-server architecture:
 
 The application will consist of the following key models:
 
-| **Table**      | **Column Name** | **Type**         | **Description**                                |
-| -------------- | --------------- | ---------------- | ---------------------------------------------- |
-| **Users**      | `id`            | Primary Key      | Unique identifier for each user                |
-|                | `name`          | String           | Full name of the user                          |
-|                | `username`      | String           | Username for login                             |
-|                | `password`      | Encrypted String | User's encrypted password                      |
-|                | `email`         | String           | User's email address                           |
-| **Budgets**    | `id`            | Primary Key      | Unique identifier for each budget              |
-|                | `user_id`       | Foreign Key      | References `user_id` in `Users` table          |
-|                | `category_id`   | Foreign Key      | References `category_id` in `Categories` table |
-|                | `month`         | Date             | Budget month (e.g. '2024-09-18')               |
-|                | `total_budget`  | Float            | Total budget amount for the month              |
-| **Spending**   | `id`            | Primary Key      | Unique identifier for each spending entry      |
-|                | `user_id`       | Foreign Key      | References `user_id` in `Users` table          |
-|                | `category_id`   | Foreign Key      | References `category_id` in `Categories` table |
-|                | `amount_spent`  | Float            | Amount spent in a category                     |
-|                | `date`          | Date             | Date of the spending (e.g. '2024-09-18')       |
-| **Categories** | `id`            | Primary Key      | Unique identifier for each category            |
-|                | `user_id`       | Foreign Key      | References `user_id` in `Users` table          |
-|                | `name`          | String           | Name of the spending category (e.g. 'Food')    |
+| **Table**        | **Column Name**  | **Type**         | **Description**                                 |
+| ---------------- | ---------------- | ---------------- | ----------------------------------------------- |
+| **Users**        | `id`             | Primary Key      | Unique identifier for each user                 |
+|                  | `firstName`      | String           | First name of the user                          |
+|                  | `lastName`       | String           | Last name of the user                           |
+|                  | `username`       | String           | Username for login                              |
+|                  | `password`       | Encrypted String | User's encrypted password                       |
+|                  | `email`          | String           | User's email address                            |
+| **Budgets**      | `id`             | Primary Key      | Unique identifier for each budget               |
+|                  | `user`           | Foreign Key      | References `user_id` in `Users` table           |
+|                  | `categoryLimits` | Map              | Map of Catagories and associated monthly limits |
+|                  | `month`          | Date             | Budget month (e.g. '2024-09-18')                |
+|                  | `total`          | Double           | Total budget amount for the month               |
+| **SpendingItem** | `id`             | Primary Key      | Unique identifier for each spending entry       |
+|                  | `user`           | Foreign Key      | References `user_id` in `Users` table           |
+|                  | `category_id`    | Foreign Key      | References `category_id` in `Categories` table  |
+|                  | `label`          | String           | Title describing what was spent                 |
+|                  | `amount_spent`   | Double           | Amount spent in a category                      |
+|                  | `date`           | Date             | Date of the spending (e.g. '2024-09-18')        |
+| **Categories**   | `id`             | Primary Key      | Unique identifier for each category             |
+|                  | `user`           | Foreign Key      | References `user_id` in `Users` table           |
+|                  | `name`           | String           | Name of the spending category (e.g. 'Food')     |
 
 ## Error Handling Considerations
 
