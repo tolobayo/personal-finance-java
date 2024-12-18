@@ -21,21 +21,27 @@ class CatagoryRepositoryTest {
     @Autowired
     private CatagoryRepository catagoryRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     private User testUser;
     private Catagory catagory1;
     private Catagory catagory2;
 
     @BeforeEach
     void setUp() {
-        User issac = new User("Issac",    "Newton", "inewt23", "pass1234", "inewt12@gmail.com");
+        testUser = new User( "Issac", "Newton", "inewt23", "pass1234", "inewt12@gmail.com");
+        testUser = userRepository.save(testUser);
 
-        catagory1 = new Catagory(issac, "Groceries");
+        catagory1 = new Catagory(testUser, "Groceries");
 
-        catagory2 = new Catagory(issac, "Rent");
+        catagory2 = new Catagory(testUser, "Rent");
 
         // Save test data to repository
         catagoryRepository.save(catagory1);
         catagoryRepository.save(catagory2);
+        
+
     }
 
     @Test

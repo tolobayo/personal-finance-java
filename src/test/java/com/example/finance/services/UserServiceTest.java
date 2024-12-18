@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import com.example.finance.entities.User;
@@ -32,12 +33,19 @@ class UserServiceTest {
         
        
         // Set up test users
-        user1 = new User("Issac",    "Newton", "inewt23", "pass1234", "inewt12@gmail.com");
-        user2 = new User("Polly",    "Hashton", "polly56", "pass1234", "polly12@gmail.com");
+        user1 = new User(1, "Issac",    "Newton", "inewt23", "pass1234", "inewt12@gmail.com");
+        user2 = new User(2, "Polly",    "Hashton", "polly56", "pass1234", "polly12@gmail.com");
+
+        // Mock repository behavior
+        Mockito.when(userRepository.save(Mockito.any(User.class)))
+           .thenAnswer(invocation -> invocation.getArgument(0)); // Return the saved user
+        
     }
 
     @Test
     void testGetUsers() {
+        System.out.println(user1.toString());
+
         // Arrange
         when(userRepository.findAll()).thenReturn(List.of(user1, user2));
 
@@ -54,14 +62,14 @@ class UserServiceTest {
     @Test
     void testAddNewUser_Success() {
         // Arrange
-        User newUser = new User("Alice", "Wonderland", "alice56", "password1234","alice@gmail.com");
+        User newUser = new User(3, "Alice", "Wonderland", "alice56", "password1234","alice@gmail.com");
         when(userRepository.findUserByEmail(newUser.getEmail())).thenReturn(Optional.empty());
 
         // Act
         userService.addNewUser(newUser);
 
         // Assert
-        verify(userRepository, times(1)).findUserByEmail("alice@example.com");
+        verify(userRepository, times(1)).findUserByEmail("alice@gmail.com");
         verify(userRepository, times(1)).save(newUser);
     }
 

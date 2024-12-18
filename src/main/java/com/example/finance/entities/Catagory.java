@@ -1,5 +1,7 @@
 package com.example.finance.entities;
 
+import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -84,6 +86,18 @@ public class Catagory {
     @Override
     public String toString() {
         return "Catagory [id=" + id + ", user=" + user + ", name=" + name + "]";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Catagory catagory = (Catagory) o;
+        return Objects.equals(name, catagory.getName());
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
     
     

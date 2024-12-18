@@ -23,6 +23,9 @@ public class BudgetRepositoryTest {
     @Autowired
     private BudgetRepository budgetRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     private User testUser;
     private Budget budget1;
     private Budget budget2;
@@ -30,7 +33,8 @@ public class BudgetRepositoryTest {
     @BeforeEach
     void setUp() {
         // Initialize test data
-        User testUser = new User("John", "Doe", "jd21", "password1234", "jd21@gmail.com");
+        testUser = new User("John", "Doe", "jd21", "password1234", "jd21@gmail.com");
+        testUser = userRepository.save(testUser);
 
         budget1 = new Budget(testUser, new HashMap<Catagory, Double>(), LocalDate.of(2024, 11, 1), 5000.00);
     
